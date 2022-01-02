@@ -10,7 +10,9 @@
     "remove": "sst remove"
   },
   "eslintConfig": {
-    "extends": ["serverless-stack"]
+    "extends": [
+      "serverless-stack"
+    ]
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.132.0"

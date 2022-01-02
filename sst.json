@@ -1,5 +1,5 @@
 {
   "name": "backend-services",
-  "region": "us-east-1",
+  "region": "ap-southeast-1",
   "main": "stacks/index.js"
 }
