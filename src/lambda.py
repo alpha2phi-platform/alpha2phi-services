@@ -1,3 +1,3 @@
 def handler(event, context):
-    print("hello cron")
+    print("Python cron job")
     return {}

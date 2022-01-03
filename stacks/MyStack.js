@@ -6,11 +6,10 @@ export default class MyStack extends sst.Stack {
 
     // Create Cron Job
     new sst.Cron(this, "Cron", {
-      defaultFunctionProps: {
-        srcPath: "src",
-      },
       schedule: "rate(1 minute)",
-      job: "lambda.handler",
+      job: {
+        function: "lambda.handler",
+      },
     });
   }
 }

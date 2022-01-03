@@ -5,30 +5,30 @@ This project was bootstrapped with [Create Serverless Stack](https://docs.server
 Start by installing the dependencies.
 
 ```bash
-$ yarn install
+$ npm install
 ```
 
 ## Commands
 
-### `yarn run start`
+### `npm run start`
 
 Starts the local Lambda development environment.
 
-### `yarn run build`
+### `npm run build`
 
 Build your app and synthesize your stacks.
 
 Generates a `.build/` directory with the compiled files and a `.build/cdk.out/` directory with the synthesized CloudFormation stacks.
 
-### `yarn run deploy [stack]`
+### `npm run deploy [stack]`
 
 Deploy all your stacks to AWS. Or optionally deploy, a specific stack.
 
-### `yarn run remove [stack]`
+### `npm run remove [stack]`
 
 Remove all your stacks and all of their resources from AWS. Or optionally removes, a specific stack.
 
-### `yarn run test`
+### `npm run test`
 
 Runs your tests using Jest. Takes all the [Jest CLI options](https://jestjs.io/docs/en/cli).
 

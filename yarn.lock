@@ -3395,10 +3395,10 @@
     node-addon-api "3.2.1"
     node-gyp "8.1.0"
 
-"@serverless-stack/cli@0.56.0":
-  version "0.56.0"
-  resolved "https://registry.yarnpkg.com/@serverless-stack/cli/-/cli-0.56.0.tgz#18b34e98f4c7308ca22dc03b2ed54a38f5f79a23"
-  integrity sha512-poy+KtQrxpD8dY3t1RO4+dEiwRIYmZvp6ywdsV+9vUAhvcaIK+PdiJDdBrfinOZTZZaka+rPBBQ6uGZLHGHR5A==
+"@serverless-stack/cli@0.56.1":
+  version "0.56.1"
+  resolved "https://registry.yarnpkg.com/@serverless-stack/cli/-/cli-0.56.1.tgz#588226d2eeb1715c057ae8c7be8528e952d4de32"
+  integrity sha512-p0mgup21na7K8KLfppPQk4v6+INHwCbJ2xDRBoeJtcVkkj5XM9k0gFJfELiXb3gi9IRCAlzKIc52tL7PgwJO9w==
   dependencies:
     "@aws-cdk/aws-apigatewayv2" "1.132.0"
     "@aws-cdk/aws-dynamodb" "1.132.0"
@@ -3411,8 +3411,8 @@
     "@babel/plugin-proposal-class-properties" "^7.10.4"
     "@babel/preset-env" "^7.10.4"
     "@serverless-stack/aws-lambda-ric" "^2.0.8"
-    "@serverless-stack/core" "^0.56.0"
-    "@serverless-stack/resources" "^0.56.0"
+    "@serverless-stack/core" "^0.56.1"
+    "@serverless-stack/resources" "^0.56.1"
     "@types/jest" "^27.0.2"
     "@types/node" "^14.0.27"
     "@typescript-eslint/eslint-plugin" "^4.15.1"
@@ -3429,7 +3429,7 @@
     esbuild "^0.12.20"
     esbuild-runner "^2.2.1"
     eslint "^7.16.0"
-    eslint-config-serverless-stack "^0.56.0"
+    eslint-config-serverless-stack "^0.56.1"
     express "^4.17.1"
     fast-safe-stringify "^2.0.6"
     fs-extra "^9.0.1"
@@ -3447,10 +3447,10 @@
     ws "^7.4.0"
     yargs "^15.4.1"
 
-"@serverless-stack/core@^0.56.0":
-  version "0.56.0"
-  resolved "https://registry.yarnpkg.com/@serverless-stack/core/-/core-0.56.0.tgz#36b0471f400c36b150f8c1de479e7d676966667a"
-  integrity sha512-udrbC0m3Y30ee9jN59JpqlWE2+4wPXFMrCJaammUUyv85AGhUqhHYzHjgOpkH3oTN3jqC53phvuVCcLLttZAJg==
+"@serverless-stack/core@^0.56.1":
+  version "0.56.1"
+  resolved "https://registry.yarnpkg.com/@serverless-stack/core/-/core-0.56.1.tgz#79e9b0ad8b76c62e6e26cdb44e85ce3166f95036"
+  integrity sha512-SWKfaovw/yANlV3sirZECaT7+z68vCNQkYMviYcu5IIPpJd+g5Jay5bf4QwrKj/c/zuHmr9jWi3CPt67/7VC5g==
   dependencies:
     "@aws-sdk/client-s3" "^3.45.0"
     "@trpc/client" "^9.16.0"
@@ -3512,10 +3512,10 @@
     path-to-regexp "^6.1.0"
     send "^0.17.1"
 
-"@serverless-stack/resources@0.56.0", "@serverless-stack/resources@^0.56.0":
-  version "0.56.0"
-  resolved "https://registry.yarnpkg.com/@serverless-stack/resources/-/resources-0.56.0.tgz#912b821ac5d43a4b93ea84e7bf190bc70292b10f"
-  integrity sha512-kTxySBfuUK5qc/pjyosi/FRAEj4T6SbWs0nKv37wkztYQgkxJ4p1a3M5huNzbFyfhefgNQ0rUdMBsigf6Qd+2w==
+"@serverless-stack/resources@0.56.1", "@serverless-stack/resources@^0.56.1":
+  version "0.56.1"
+  resolved "https://registry.yarnpkg.com/@serverless-stack/resources/-/resources-0.56.1.tgz#4a9691860ed0949432b672ff1b3e437a00fb6979"
+  integrity sha512-EkFsFaLJpsJUsxUksMEyq9f6X3vXhdXJa1IWXXqMJpzmgZCMnjYMMxFXKNXjgM1k7rIthtz4z1cwR/QZmyzfcw==
   dependencies:
     "@aws-cdk/aws-apigateway" "1.132.0"
     "@aws-cdk/aws-apigatewayv2" "1.132.0"
@@ -3555,7 +3555,7 @@
     "@aws-cdk/lambda-layer-awscli" "1.132.0"
     "@graphql-tools/load-files" "^6.3.2"
     "@graphql-tools/merge" "^6.2.14"
-    "@serverless-stack/core" "^0.56.0"
+    "@serverless-stack/core" "^0.56.1"
     "@serverless-stack/nextjs-lambda" "^0.1.9"
     "@types/jest" "^26.0.7"
     archiver "^5.3.0"
@@ -3821,9 +3821,9 @@
   integrity sha512-YATxVxgRqNH6nHEIsvg6k2Boc1JHI9ZbH5iWFFv/MTkchz3b1ieGDa5T0a9RznNdI0KhVbdbWSN+KWWrQZRxTw==
 
 "@types/node@*":
-  version "17.0.6"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.6.tgz#cc1589c9ee853b389e67e8fb4384e0f250a139b9"
-  integrity sha512-+XBAjfZmmivILUzO0HwBJoYkAyyySSLg5KCGBDFLomJo0sV6szvVLAf4ANZZ0pfWzgEds5KmGLG9D5hfEqOhaA==
+  version "17.0.7"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.7.tgz#4a53d8332bb65a45470a2f9e2611f1ced637a5cb"
+  integrity sha512-1QUk+WAUD4t8iR+Oj+UgI8oJa6yyxaB8a8pHaC8uqM6RrS1qbL7bf3Pwl5rHv0psm2CuDErgho6v5N+G+5fwtQ==
 
 "@types/node@^10.1.0", "@types/node@^10.17.60":
   version "10.17.60"
@@ -5366,9 +5366,9 @@ constants-browserify@1.0.0, constants-browserify@^1.0.0:
   integrity sha1-wguW2MYXdIqvHBYCF2DNJ/y4y3U=
 
 constructs@^3.3.69:
-  version "3.3.177"
-  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.3.177.tgz#e0f49f27d99b1864e7b1236e68fc42a60685749b"
-  integrity sha512-M0KmQwqp5EBybXDY/8JTJlFLyT3Qoy6Xf67hjuWn2tDAJura91rPz2jhOxCt1C9GlES2dSvyZcLx/H7B0zsGLQ==
+  version "3.3.178"
+  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.3.178.tgz#6ed26d29858fd11c7a2c29fc07db9589b7ecd4ed"
+  integrity sha512-0p/b9U/IBRybg7sTyqmm6e0RdqTHZz7ap8YgTrkKlw5CPXthgUMRLw4ACHPJpZjRWtNxIdEIk4wigTe/Qvsb9w==
 
 content-disposition@0.5.4:
   version "0.5.4"
@@ -6087,10 +6087,10 @@ escodegen@^2.0.0:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-config-serverless-stack@^0.56.0:
-  version "0.56.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-serverless-stack/-/eslint-config-serverless-stack-0.56.0.tgz#13cbb8009739c542c4e703c20c6da12771fda725"
-  integrity sha512-u39kRZkN4ZYzwp3hH0t7rCa8qs1uu774rpPwaEzkVkrzi3wME21k+6bA2KHbulXronA0NO2w5b/kS7CQ95Z2fQ==
+eslint-config-serverless-stack@^0.56.1:
+  version "0.56.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-serverless-stack/-/eslint-config-serverless-stack-0.56.1.tgz#bb7d0dd19e171d7836d53e0967b02b8caa87e71d"
+  integrity sha512-SUOznxQFXhUqdGCb033W/MyjG1r646+zoebAaDbPa+29VwauPURKqqmXnNnD0yp7bdaDClkK8Wd2IxZQzFGfAA==
   dependencies:
     "@babel/eslint-parser" "^7.11.3"
     "@babel/plugin-proposal-class-properties" "^7.10.4"
@@ -9880,9 +9880,9 @@ picocolors@^1.0.0:
   integrity sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==
 
 picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.3, picomatch@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.0.tgz#f1f061de8f6a4bf022892e2d128234fb98302972"
-  integrity sha512-lY1Q/PiJGC2zOv/z391WOTD+Z02bCgsFfvxoXXf6h7kv9o+WmsmzYqrAwY63sNgOxE4xEdq0WyUnXfKeBrSvYw==
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.1.tgz#3ba3833733646d9d3e4995946c1365a67fb07a42"
+  integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
 
 pify@^3.0.0:
   version "3.0.0"
