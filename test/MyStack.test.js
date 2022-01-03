@@ -5,7 +5,8 @@ import MyStack from "../stacks/MyStack";
 test("Test Stack", () => {
   const app = new sst.App();
   app.setDefaultFunctionProps({
-    runtime: "python3.7"
+    runtime: "python3.8",
+    srcPath: "src",
   });
   // WHEN
   const stack = new MyStack(app, "test-stack");
