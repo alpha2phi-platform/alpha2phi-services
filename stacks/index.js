@@ -1,4 +1,4 @@
-import MyStack from "./MyStack";
+import JobStack from "./JobStack";
 
 export default function main(app) {
   // Set default runtime for all functions
@@ -7,7 +7,7 @@ export default function main(app) {
     srcPath: "src",
   });
 
-  new MyStack(app, "my-stack");
+  new JobStack(app, "job");
 
   // Add more stacks
 }

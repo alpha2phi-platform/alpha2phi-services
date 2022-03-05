@@ -1,14 +1,15 @@
 import { Template } from "aws-cdk-lib/assertions";
 import * as sst from "@serverless-stack/resources";
-import MyStack from "../stacks/MyStack";
+import JobStack from "../stacks/JobStack";
 
-test("Test Stack", () => {
+test("Test Job Stack", () => {
   const app = new sst.App();
   app.setDefaultFunctionProps({
     runtime: "python3.8",
+    srcPath: "src",
   });
   // WHEN
-  const stack = new MyStack(app, "test-stack");
+  const stack = new JobStack(app, "job-stack");
   // THEN
   const template = Template.fromStack(stack);
   template.resourceCountIs("AWS::Lambda::Function", 1);

@@ -1,3 +1,6 @@
+import investpy
+
+
 def handler(event, context):
-    print("Python cron job")
+    print("handler...")
     return {}
