@@ -10,6 +10,9 @@ export default class JobStack extends sst.Stack {
       job: {
         function: "lambda.handler",
       },
+      environment: {
+        STOCKS_TABLE: process.env.STOCKS_TABLE,
+      },
     });
   }
 }

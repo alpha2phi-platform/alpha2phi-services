@@ -8,7 +8,7 @@ export default class StorageStack extends sst.Stack {
     super(scope, id, props);
 
     // Create the DynamoDB table
-    this.table = new sst.Table(this, "Stocks", {
+    this.table = new sst.Table(this, process.env.STOCKS_TABLE, {
       fields: {
         country: sst.TableFieldType.STRING,
         symbol: sst.TableFieldType.STRING,
