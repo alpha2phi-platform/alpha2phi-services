@@ -9,7 +9,7 @@ test("Test Job Stack", () => {
     srcPath: "src",
   });
   // WHEN
-  const stack = new JobStack(app, "job-stack");
+  const stack = new JobStack(app, "job");
   // THEN
   const template = Template.fromStack(stack);
   template.resourceCountIs("AWS::Lambda::Function", 1);

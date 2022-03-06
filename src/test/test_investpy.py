@@ -1,21 +1,21 @@
 import unittest
 
-from ..myinvestor import MyInvestor
+import investpy
 
 
 class TestInvestpy(unittest.TestCase):
-    def test_upper(self):
-        self.assertEqual("foo".upper(), "FOO")
+    """Test investpy library"""
 
-    def test_isupper(self):
-        self.assertTrue("FOO".isupper())
-        self.assertFalse("Foo".isupper())
+    def test_get_stock_countries(self):
+        """Get stock countries"""
+        stock_countries = investpy.stocks.get_stock_countries()
+        self.assertGreater(len(stock_countries), 0)
 
-    def test_split(self):
-        s = "hello world"
-        self.assertEqual(s.split(), ["hello", "world"])
-        with self.assertRaises(TypeError):
-            s.split(" ")
+    def test_get_stocks_for_country(self):
+        """Get stocks for a country"""
+        df = investpy.stocks.get_stocks("united states")
+        print(df)
+        self.assertGreater(len(df), 0)
 
 
 if __name__ == "__main__":

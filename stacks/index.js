@@ -1,4 +1,5 @@
 import JobStack from "./JobStack";
+import StorageStack from "./StorageStack";
 
 export default function main(app) {
   // Set default runtime for all functions
@@ -8,6 +9,5 @@ export default function main(app) {
   });
 
   new JobStack(app, "job");
-
-  // Add more stacks
+  new StorageStack(app, "storage");
 }
