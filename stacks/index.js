@@ -6,8 +6,12 @@ export default function main(app) {
   app.setDefaultFunctionProps({
     runtime: "python3.8",
     srcPath: "src",
+    // environment: {
+    //   STOCKS_TABLE: process.env.STOCKS_TABLE,
+    // },
   });
 
-  new JobStack(app, "job");
-  new StorageStack(app, "storage");
+  const storageStack = new StorageStack(app, "storage");
+
+  const jobStack = new JobStack(app, "job", { table: storageStack.table });
 }
