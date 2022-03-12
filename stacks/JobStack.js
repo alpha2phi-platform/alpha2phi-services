@@ -10,6 +10,7 @@ export default class JobStack extends sst.Stack {
     // Create Cron Job
     this.cron = new sst.Cron(this, "Cron", {
       schedule: "rate(1 minute)",
+      timeout: 900,
       job: {
         handler: "lambda.handler",
         environment: {
