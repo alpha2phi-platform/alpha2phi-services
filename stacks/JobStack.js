@@ -13,11 +13,11 @@ export default class JobStack extends sst.Stack {
       job: {
         handler: "lambda.handler",
         environment: {
-          STOCKS_TABLE: process.env.STOCKS_TABLE,
+          STOCKS_TABLE: table.dynamodbTable.tableName,
         },
       },
     });
-    this.cron.jobFunction.attachPermissions([table]);
-    this.cron.jobFunction.attachPermissions(["dynamodb"]);
+    // this.cron.attachPermissions(["dynamodb:PutItem"]);
+    this.cron.attachPermissions([table]);
   }
 }

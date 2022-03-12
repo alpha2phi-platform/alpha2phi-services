@@ -12,6 +12,5 @@ export default function main(app) {
   });
 
   const storageStack = new StorageStack(app, "storage");
-
-  const jobStack = new JobStack(app, "job", { table: storageStack.table });
+  new JobStack(app, "job", { table: storageStack.table });
 }
