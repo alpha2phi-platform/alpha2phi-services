@@ -12,5 +12,8 @@ export default function main(app) {
   });
 
   const storageStack = new StorageStack(app, "storage");
-  new JobStack(app, "job", { table: storageStack.table });
+  new JobStack(app, "job", {
+    stocksTable: storageStack.stocksTable,
+    countriesTable: storageStack.countriesTable,
+  });
 }

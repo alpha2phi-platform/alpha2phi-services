@@ -9,6 +9,7 @@ class TestInvestpy(unittest.TestCase):
     def test_get_stock_countries(self):
         """Get stock countries"""
         stock_countries = investpy.stocks.get_stock_countries()
+        print(type(stock_countries))
         self.assertGreater(len(stock_countries), 0)
 
     def test_get_stocks_for_country(self):

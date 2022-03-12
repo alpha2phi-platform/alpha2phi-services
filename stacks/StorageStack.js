@@ -2,20 +2,27 @@ import * as sst from "@serverless-stack/resources";
 
 export default class StorageStack extends sst.Stack {
   // Public reference to the table
-  table;
+  countriesTable;
+  stocksTable;
 
   constructor(scope, id, props) {
     super(scope, id, props);
 
+    // Create the Countries table
+    this.countriesTable = new sst.Table(this, "Countries", {
+      fields: {
+        country: sst.TableFieldType.STRING,
+      },
+      primaryIndex: { partitionKey: "country" },
+    });
+
     // Create the Stocks table
-    this.table = new sst.Table(this, "Stocks", {
+    this.stocksTable = new sst.Table(this, "Stocks", {
       fields: {
         country: sst.TableFieldType.STRING,
         symbol: sst.TableFieldType.STRING,
       },
       primaryIndex: { partitionKey: "country", sortKey: "symbol" },
     });
-
-    // TODO - Create Countries table
   }
 }
