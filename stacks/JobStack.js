@@ -9,10 +9,10 @@ export default class JobStack extends sst.Stack {
 
     // Create Cron Job
     this.cron = new sst.Cron(this, "cron_stocks", {
-      schedule: "rate(5 minute)",
-      timeout: 900,
+      schedule: "rate(5 minutes)",
       job: {
         handler: "cron_stocks.handler",
+        timeout: 900,
         environment: {
           STOCKS_TABLE: stocksTable.dynamodbTable.tableName,
           COUNTRIES_TABLE: countriesTable.dynamodbTable.tableName,

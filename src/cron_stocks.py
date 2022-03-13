@@ -48,7 +48,7 @@ def update_stocks(stocks):
 def handler(event, context):
 
     countries = investpy.stocks.get_stock_countries()
-    print(countries)
+    # print(countries)
     update_countries(countries)
 
     stocks = investpy.stocks.get_stocks("united states")
