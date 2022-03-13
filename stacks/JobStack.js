@@ -8,11 +8,11 @@ export default class JobStack extends sst.Stack {
     const { stocksTable, countriesTable } = props;
 
     // Create Cron Job
-    this.cron = new sst.Cron(this, "Cron", {
-      schedule: "rate(1 minute)",
+    this.cron = new sst.Cron(this, "cron_stocks", {
+      schedule: "rate(5 minute)",
       timeout: 900,
       job: {
-        handler: "lambda.handler",
+        handler: "cron_stocks.handler",
         environment: {
           STOCKS_TABLE: stocksTable.dynamodbTable.tableName,
           COUNTRIES_TABLE: countriesTable.dynamodbTable.tableName,
