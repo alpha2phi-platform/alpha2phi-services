@@ -9,7 +9,7 @@ export default class StorageStack extends sst.Stack {
     super(scope, id, props);
 
     // Create the Countries table
-    this.countriesTable = new sst.Table(this, "Countries", {
+    this.countriesTable = new sst.Table(this, process.env.COUNTRIES_TABLE, {
       fields: {
         country: sst.TableFieldType.STRING,
       },
@@ -17,7 +17,7 @@ export default class StorageStack extends sst.Stack {
     });
 
     // Create the Stocks table
-    this.stocksTable = new sst.Table(this, "Stocks", {
+    this.stocksTable = new sst.Table(this, process.env.STOCKS_TABLE, {
       fields: {
         country: sst.TableFieldType.STRING,
         symbol: sst.TableFieldType.STRING,
