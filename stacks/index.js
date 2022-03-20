@@ -1,5 +1,5 @@
-import JobStack from "./JobStack";
-import StorageStack from "./StorageStack";
+import CronStack from "./CronStack";
+import DbStack from "./DbStack";
 
 export default function main(app) {
   // Set default runtime for all functions
@@ -11,9 +11,9 @@ export default function main(app) {
     // },
   });
 
-  const storageStack = new StorageStack(app, "storage");
-  new JobStack(app, "job", {
-    stocksTable: storageStack.stocksTable,
-    countriesTable: storageStack.countriesTable,
+  const dbStack = new DbStack(app, "db");
+  new CronStack(app, "cron", {
+    stocksTable: dbStack.stocksTable,
+    countriesTable: dbStack.countriesTable,
   });
 }

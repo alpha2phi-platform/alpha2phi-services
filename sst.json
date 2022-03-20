@@ -1,5 +1,5 @@
 {
-  "name": "backend-services",
+  "name": "alpha2phi",
   "region": "ap-southeast-1",
   "main": "stacks/index.js"
 }
