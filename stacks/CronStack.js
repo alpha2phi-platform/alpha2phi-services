@@ -11,7 +11,7 @@ export default class CronStack extends sst.Stack {
     this.cron = new sst.Cron(this, "cron", {
       schedule: "rate(5 minutes)",
       job: {
-        handler: "cron_stocks.handler",
+        handler: "cron.handler",
         timeout: 900,
         environment: {
           STOCKS_TABLE: stocksTable.dynamodbTable.tableName,
