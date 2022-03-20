@@ -5,19 +5,22 @@ export default class JobStack extends sst.Stack {
   constructor(scope, id, props) {
     super(scope, id, props);
 
-    const { table } = props;
+    const { stocksTable, countriesTable } = props;
 
     // Create Cron Job
-    this.cron = new sst.Cron(this, "Cron", {
-      schedule: "rate(1 minute)",
+    this.cron = new sst.Cron(this, "cron_stocks", {
+      schedule: "rate(5 minutes)",
       job: {
-        handler: "lambda.handler",
+        handler: "cron_stocks.handler",
+        timeout: 900,
         environment: {
-          STOCKS_TABLE: table.dynamodbTable.tableName,
+          STOCKS_TABLE: stocksTable.dynamodbTable.tableName,
+          COUNTRIES_TABLE: countriesTable.dynamodbTable.tableName,
         },
       },
     });
     // this.cron.attachPermissions(["dynamodb:PutItem"]);
-    this.cron.attachPermissions([table]);
+    this.cron.attachPermissions([stocksTable]);
+    this.cron.attachPermissions([countriesTable]);
   }
 }
