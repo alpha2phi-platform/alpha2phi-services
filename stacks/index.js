@@ -6,9 +6,9 @@ export default function main(app) {
   app.setDefaultFunctionProps({
     runtime: "python3.8",
     srcPath: "src",
-    // environment: {
-    //   STOCKS_TABLE: process.env.STOCKS_TABLE,
-    // },
+    environment: {
+      STAGE: app.stage,
+    },
   });
 
   const dbStack = new DbStack(app, "db");

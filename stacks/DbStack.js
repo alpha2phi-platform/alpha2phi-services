@@ -1,5 +1,7 @@
 import * as sst from "@serverless-stack/resources";
 
+// TODO - change to functional component
+
 export default class DbStack extends sst.Stack {
   // Public reference to the table
   countriesTable;
