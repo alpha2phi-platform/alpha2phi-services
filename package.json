@@ -1,29 +1,29 @@
 {
-  "name": "alpha2phi-services",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "test": "sst test",
-    "start": "sst start",
-    "build": "sst build",
-    "deploy": "sst deploy",
-    "remove": "sst remove"
-  },
-  "eslintConfig": {
-    "extends": [
-      "serverless-stack"
-    ]
-  },
-  "dependencies": {
-    "@serverless-stack/cli": "0.69.7",
-    "@serverless-stack/resources": "0.69.7",
-    "aws-cdk-lib": "2.21.1"
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.20.0",
-    "@typescript-eslint/parser": "^5.20.0",
-    "eslint": "8.14.0",
-    "jest": "^27.5.1",
-    "typescript": "^4.6.3"
-  }
+	"name": "alpha2phi-services",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"test": "sst test",
+		"start": "sst start",
+		"build": "sst build",
+		"deploy": "sst deploy",
+		"remove": "sst remove"
+	},
+	"eslintConfig": {
+		"extends": [
+			"serverless-stack"
+		]
+	},
+	"dependencies": {
+		"@serverless-stack/cli": "1.0.0",
+		"@serverless-stack/resources": "1.0.0",
+		"aws-cdk-lib": "2.22.0"
+	},
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^5.22.0",
+		"@typescript-eslint/parser": "^5.22.0",
+		"eslint": "8.14.0",
+		"jest": "^28.0.3",
+		"typescript": "^4.6.4"
+	}
 }

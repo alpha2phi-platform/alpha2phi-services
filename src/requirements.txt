@@ -1,3 +1,4 @@
 investpy
 boto3
 botocore
+backtrader
