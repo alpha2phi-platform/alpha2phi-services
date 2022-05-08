@@ -4,7 +4,7 @@ export function DbStack({ stack }: StackContext) {
   // Create the Countries table
   const countriesTable = new Table(stack, process.env.COUNTRIES_TABLE!, {
     fields: {
-      country: "string"
+      country: "string",
     },
     primaryIndex: { partitionKey: "country" },
   });
