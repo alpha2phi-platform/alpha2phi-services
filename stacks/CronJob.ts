@@ -1,8 +1,8 @@
 import { StackContext, Cron, use } from "@serverless-stack/resources";
-import { DbStack } from "./DbStack";
+import { Database } from "./DbStack";
 
-export function CronStack({ stack }: StackContext) {
-  const db = use(DbStack);
+export function CronJob({ stack }: StackContext) {
+  const db = use(Database);
 
   // Create Cron Job
   const cron = new Cron(stack, "cron", {

@@ -1,6 +1,6 @@
 import { StackContext, Table } from "@serverless-stack/resources";
 
-export function DbStack({ stack }: StackContext) {
+export function Database({ stack }: StackContext) {
   // Create the Countries table
   const countriesTable = new Table(stack, process.env.COUNTRIES_TABLE!, {
     fields: {
