@@ -1,5 +1,7 @@
-import { MyStack } from "./MyStack";
 import { App } from "@serverless-stack/resources";
+import { RemovalPolicy } from "aws-cdk-lib";
+import { DbStack } from "./DbStack";
+import { CronStack } from "./CronStack";
 
 export default function (app: App) {
   app.setDefaultFunctionProps({
@@ -9,5 +11,8 @@ export default function (app: App) {
       STAGE: app.stage,
     },
   });
-  app.stack(MyStack);
+
+  if (app.local) app.setDefaultRemovalPolicy(RemovalPolicy.DESTROY);
+
+  app.stack(DbStack).stack(CronStack);
 }
