@@ -35,6 +35,14 @@ def save_csv(df, file_name):
 
 
 def get_stock_info(symbol, country):
+    """get stock info
+
+    get stock info
+
+    args:
+        symbol: stock symbol
+        country: stock country
+    """
     try:
         return investpy.get_stock_information(symbol, country)
     except:
@@ -111,15 +119,19 @@ class TestInvestPy(unittest.TestCase):
 
     """
 
-    @unittest.skip("Skip setup")
     def setUp(self):
         # Cretarget folder
         create_folder(TARGET_DATASET_FOLDER)
 
-    @unittest.skip("skip get stocks")
     def test_get_stocks(self):
         # Get stocks for the country
-        stocks = investpy.get_stocks(country=COUNTRY)
+        self.stocks = investpy.get_stocks(country=COUNTRY)
 
         # Save stock list
-        save_csv(stocks, STOCKS_DATASET)
+        save_csv(self.stocks, STOCKS_DATASET)
+
+    def test_download_stock_info(self):
+        """Download stock info"""
+        print("Downloading stock info")
+        stocks = investpy.get_stocks(country=COUNTRY)
+        download_stocks_info(stocks)
