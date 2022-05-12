@@ -1,5 +1,5 @@
 {
-  "name": "alpah2phi-services",
+  "name": "alpah2phi",
   "region": "ap-southeast-1",
   "main": "stacks/index.ts"
 }

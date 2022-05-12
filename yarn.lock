@@ -542,15 +542,15 @@
     node-addon-api "3.2.1"
     node-gyp "8.1.0"
 
-"@serverless-stack/cli@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@serverless-stack/cli/-/cli-1.0.4.tgz#35009035cfd4c0bd6f2749518674aa13ea04a6bb"
-  integrity sha512-GWPk9iE1JAyhvm45iqxQZEtmo0VUqY38Dsa3bRyRB4+sIM9cH65Fxgxmj6bLlJzvgLths9rc57IH/r7POfZcRQ==
+"@serverless-stack/cli@^1.0.11":
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@serverless-stack/cli/-/cli-1.0.11.tgz#ad5a6d2c5e120905578308989b7bf3e99b183c4c"
+  integrity sha512-+yH+wgcnEfztxbY+2w0A+z7JrLW+jj5IamujmPwZm6FPdGSv6NvEnVowCn8aR65quc/T5JrkbZCrfu7dz0mkAw==
   dependencies:
     "@aws-cdk/aws-apigatewayv2-alpha" "2.22.0-alpha.0"
     "@graphql-codegen/cli" "^2.6.2"
-    "@serverless-stack/core" "1.0.4"
-    "@serverless-stack/resources" "1.0.4"
+    "@serverless-stack/core" "1.0.11"
+    "@serverless-stack/resources" "1.0.11"
     aws-cdk "2.22.0"
     aws-cdk-lib "2.22.0"
     aws-sdk "^2.1110.0"
@@ -569,10 +569,10 @@
     ws "^7.4.0"
     yargs "^15.4.1"
 
-"@serverless-stack/core@1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@serverless-stack/core/-/core-1.0.4.tgz#ec46eec4cfd9215a314414c407bd74849ac4212b"
-  integrity sha512-l3wT/shrqH4YnSXzga6skBaMPfuTogkfySpdMylKq8MwZG89dytRXsLokxb+GR3PqyzWttt61obWIQucRtTsNg==
+"@serverless-stack/core@1.0.11":
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@serverless-stack/core/-/core-1.0.11.tgz#cb250370d83a2323369efaf364e54a39c0dba728"
+  integrity sha512-gwaNVdC6S+cHnyK79nR68lWG9qIT9HMQoObhe0r6XCXU5Yt3g5sxMqfrvELv3hpgZGk5F0yYXL1CK1AX6Fr0yQ==
   dependencies:
     "@serverless-stack/aws-lambda-ric" "^2.0.13"
     "@trpc/server" "^9.16.0"
@@ -586,7 +586,6 @@
     conf "^10.1.1"
     constructs "^10.0.29"
     cross-spawn "^7.0.3"
-    dataloader "^2.0.0"
     dendriform-immer-patch-optimiser "^2.1.0"
     dotenv "^10.0.0"
     dotenv-expand "^5.1.0"
@@ -603,10 +602,10 @@
     xstate "4.26.1"
     zod "^3.11.6"
 
-"@serverless-stack/resources@1.0.4", "@serverless-stack/resources@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@serverless-stack/resources/-/resources-1.0.4.tgz#7d8590132ffbbab6414d65c229d662f985c377cb"
-  integrity sha512-k7RECq8bPE+a17EZUYFApEtBmeZF2Wcx6GD47q4vtKQ7/7QHRo479OLmEAyOOk/PlMLxIh0CqrM6j7M206yufQ==
+"@serverless-stack/resources@1.0.11", "@serverless-stack/resources@^1.0.11":
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@serverless-stack/resources/-/resources-1.0.11.tgz#c80dedf4b68d86d16b7281c77387714496fb9eb2"
+  integrity sha512-U1rMDqdt0nkSy3Of0jjC/H4NIFsrIA44RALkQ518iEUof0UalqXKj8klq46vovPbxI+RsIa0hccky+1rfrW6yg==
   dependencies:
     "@aws-cdk/aws-apigatewayv2-alpha" "2.22.0-alpha.0"
     "@aws-cdk/aws-apigatewayv2-authorizers-alpha" "2.22.0-alpha.0"
@@ -614,7 +613,7 @@
     "@aws-cdk/aws-appsync-alpha" "2.22.0-alpha.0"
     "@graphql-tools/load-files" "^6.3.2"
     "@graphql-tools/merge" "^6.2.14"
-    "@serverless-stack/core" "1.0.4"
+    "@serverless-stack/core" "1.0.11"
     archiver "^5.3.0"
     aws-cdk-lib "2.22.0"
     chalk "^4.1.0"
@@ -622,7 +621,7 @@
     cross-spawn "^7.0.3"
     fs-extra "^9.0.1"
     glob "^7.1.7"
-    graphql "^15.5.1"
+    graphql "^16.5.0"
     zip-local "^0.3.4"
     zod "^3.14.3"
 
@@ -1673,7 +1672,7 @@ cross-undici-fetch@^0.4.0:
     undici "^5.1.0"
     web-streams-polyfill "^3.2.0"
 
-dataloader@2.1.0, dataloader@^2.0.0:
+dataloader@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/dataloader/-/dataloader-2.1.0.tgz#c69c538235e85e7ac6c6c444bae8ecabf5de9df7"
   integrity sha512-qTcEYLen3r7ojZNgVUaRggOI+KM7jrKxXeSHhogh/TWxYMeONEMqY+hmkobiYQozsGIyg9OYVzO4ZIfoB4I0pQ==
@@ -2695,10 +2694,10 @@ graphql-ws@^5.4.1:
   resolved "https://registry.yarnpkg.com/graphql-ws/-/graphql-ws-5.8.1.tgz#daf72534b8a169a272e730fa4f3ce0e6d04e2883"
   integrity sha512-UVf/fxlHultC1+12tX9ShTIipqQFNZ96g7N51RFQlk7MFPsDUUMCR3QXVEzHEd5xlTp16rs5vCyfBljvcPN3fA==
 
-graphql@^15.5.1:
-  version "15.8.0"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.8.0.tgz#33410e96b012fa3bdb1091cc99a94769db212b38"
-  integrity sha512-5gghUc24tP9HRznNpV2+FIoq3xKkj5dTQqf4v0CpdPbFVwFkWoxOM+o+2OC9ZSvjEMTjfmG9QT+gcvggTwW1zw==
+graphql@^16.5.0:
+  version "16.5.0"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-16.5.0.tgz#41b5c1182eaac7f3d47164fb247f61e4dfb69c85"
+  integrity sha512-qbHgh8Ix+j/qY+a/ZcJnFQ+j8ezakqPiHwPiZhV/3PgGlgf96QMBB5/f2rkiC9sgLoy/xvT6TSiaf2nTHJh5iA==
 
 gzip-size@^6.0.0:
   version "6.0.0"
@@ -5012,10 +5011,10 @@ vite@^2.9.8:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vitest@^0.12.1:
-  version "0.12.3"
-  resolved "https://registry.yarnpkg.com/vitest/-/vitest-0.12.3.tgz#d17b6ffbb17b462779e7ca3502379f34dc09d04d"
-  integrity sha512-Dc4uJAcnUampdJ6+C8IasrmL+Px+oDhS9gxeHlL9uwUzoM0ae2WydAK9UF2THxHszfZogLGT37atQwOkj1Lqvg==
+vitest@^0.12.4:
+  version "0.12.4"
+  resolved "https://registry.yarnpkg.com/vitest/-/vitest-0.12.4.tgz#de1e3180bd9af97e87564482d347dd7ac714ca8d"
+  integrity sha512-EDxdhlAt6vcu6y4VouAI60z78iCAVFnfBL4VlSQVQnGmOk5altOtIKvp3xfZ+cfo4iVHgqq1QNyf5qOFiL4leg==
   dependencies:
     "@types/chai" "^4.3.1"
     "@types/chai-subset" "^1.3.3"
