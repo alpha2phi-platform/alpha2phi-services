@@ -3,14 +3,10 @@ import time
 
 import boto3
 import investpy
-from alphalib.logger import LOGGER
+import pandas as pd
 
-from . import COUNTRIES_TABLE_NAME, STOCKS_TABLE_NAME
-
-# Dynamodb tables
-dynamodb = boto3.resource("dynamodb")
-stocks_table = dynamodb.Table(STOCKS_TABLE_NAME)
-countries_table = dynamodb.Table(COUNTRIES_TABLE_NAME)
+from .config import COUNTRIES_TABLE_NAME, STOCKS_TABLE_NAME
+from .logger import LOGGER
 
 
 def get_stock_info(symbol, country):
@@ -18,7 +14,7 @@ def get_stock_info(symbol, country):
         return investpy.get_stock_information(symbol, country)
     except Exception as e:
         LOGGER.exception(f"Error getting stock for {country} {symbol}", e)
-        return None
+        return pd.DataFrame()
 
 
 def get_all_stocks_info(stocks):
@@ -41,6 +37,8 @@ def get_all_stocks_info(stocks):
 
 
 def update_countries(countries):
+    dynamodb = boto3.resource("dynamodb")
+    countries_table = dynamodb.Table(COUNTRIES_TABLE_NAME)
     with countries_table.batch_writer() as batch:
         for country in countries:
             item = {"country": country}
@@ -48,6 +46,8 @@ def update_countries(countries):
 
 
 def update_stocks(stocks):
+    dynamodb = boto3.resource("dynamodb")
+    stocks_table = dynamodb.Table(STOCKS_TABLE_NAME)
     with stocks_table.batch_writer() as batch:
         for _, row in stocks.iterrows():
             batch.put_item(json.loads(row.to_json()))
