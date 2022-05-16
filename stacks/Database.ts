@@ -2,7 +2,7 @@ import { StackContext, Table } from "@serverless-stack/resources";
 
 export function Database({ stack }: StackContext) {
   // Create the Countries table
-  const countriesTable = new Table(stack, process.env.COUNTRIES_TABLE!, {
+  const countriesTable = new Table(stack, process.env.COUNTRIES_TABLE, {
     fields: {
       country: "string",
     },
@@ -10,7 +10,7 @@ export function Database({ stack }: StackContext) {
   });
 
   // Create the Stocks table
-  const stocksTable = new Table(stack, process.env.STOCKS_TABLE!, {
+  const stocksTable = new Table(stack, process.env.STOCKS_TABLE, {
     fields: {
       country: "string",
       symbol: "string",

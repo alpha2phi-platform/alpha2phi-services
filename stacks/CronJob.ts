@@ -6,7 +6,7 @@ export function CronJob({ stack }: StackContext) {
 
   // Create Cron Job
   const cron_get_stocks = new Cron(stack, "cron_get_stocks", {
-    schedule: "rate(5 minutes)",
+    schedule: "rate(1 minutes)",
     job: {
       function: {
         handler: "functions/cron_get_stocks.handler",
