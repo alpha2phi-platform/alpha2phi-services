@@ -1,15 +1,13 @@
-import investpy
-from alphalib import update_countries, update_stocks
+from .alphalib import (COUNTRY, get_stock_countries, get_stocks,
+                       update_countries, update_stocks)
 
 
 def handler(event, context):
 
-    countries = investpy.stocks.get_stock_countries()
-    # print(countries)
+    countries = get_stock_countries()
     update_countries(countries)
 
-    stocks = investpy.stocks.get_stocks("united states")
+    stocks = get_stocks(COUNTRY)
     update_stocks(stocks)
-    # stocks.apply(update_stock, axis=1)
 
     return {}

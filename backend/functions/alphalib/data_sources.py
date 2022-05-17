@@ -6,14 +6,22 @@ import investpy
 import pandas as pd
 
 from .config import COUNTRIES_TABLE_NAME, STOCKS_TABLE_NAME
-from .logger import LOGGER
+from .logger import logger
+
+
+def get_stock_countries() -> list[str]:
+    return investpy.stocks.get_stock_countries()
+
+
+def get_stocks(country: str) -> pd.DataFrame:
+    return investpy.stocks.get_stocks(country)
 
 
 def get_stock_info(symbol, country):
     try:
         return investpy.get_stock_information(symbol, country)
     except Exception as e:
-        LOGGER.exception(f"Error getting stock for {country} {symbol}", e)
+        logger.exception(f"Error getting stock for {country} {symbol}", e)
         return pd.DataFrame()
 
 
@@ -52,6 +60,8 @@ def update_stocks(stocks):
         for _, row in stocks.iterrows():
             batch.put_item(json.loads(row.to_json()))
 
+
+# stocks.apply(update_stock, axis=1)
 
 # def update_stock(row):
 #     """Update stock table

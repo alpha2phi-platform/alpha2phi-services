@@ -17,4 +17,4 @@ def create_logger():
 
 
 # Create the logger
-LOGGER = create_logger()
+logger = create_logger()

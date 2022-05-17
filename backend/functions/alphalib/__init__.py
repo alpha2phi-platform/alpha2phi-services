@@ -1,5 +1,5 @@
 from .config import *
-from .data_sources import get_stock_info, update_countries, update_stocks
-from .logger import LOGGER
+from .data_sources import *
+from .logger import logger
 
 __version__ = "0.0.1"
