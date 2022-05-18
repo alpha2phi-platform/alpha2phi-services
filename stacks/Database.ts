@@ -18,5 +18,27 @@ export function Database({ stack }: StackContext) {
     primaryIndex: { partitionKey: "country", sortKey: "symbol" },
   });
 
-  return { countriesTable, stocksTable };
+  // Create the Stocks_Info table
+  const stocksInfoTable = new Table(stack, process.env.STOCKS_INFO_TABLE, {
+    fields: {
+      symbol: "string",
+      country: "string",
+    },
+    primaryIndex: { partitionKey: "country", sortKey: "symbol" },
+  });
+
+  // Create the Stocks_Dividends table -- TODO
+  const stocksDividendsTable = new Table(
+    stack,
+    process.env.STOCKS_DIVIDENDS_TABLE,
+    {
+      fields: {
+        symbol: "string",
+        country: "string",
+      },
+      primaryIndex: { partitionKey: "country", sortKey: "symbol" },
+    }
+  );
+
+  return { countriesTable, stocksTable, stocksInfoTable, stocksDividendsTable };
 }
