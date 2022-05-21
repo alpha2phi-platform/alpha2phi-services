@@ -49,7 +49,7 @@ class TestAlphalib(unittest.TestCase):
         for name in column_names:
             new_column_names.append(sanitized_column_name(name))
         stocks.columns = new_column_names
-        print(stocks.head(1))
+        logger.info(stocks.head(10))
 
         # for _, row in stocks.iterrows():
         #     logger.info(json.loads(row.to_json()))
@@ -57,14 +57,14 @@ class TestAlphalib(unittest.TestCase):
     # @unittest.skip("Skipped")
     def test_get_stock_dividends(self):
         stocks_dividends = get_stock_dividends("GM", "united states")
-        print(stocks_dividends.columns.to_list())
+        logger.info(stocks_dividends.columns.to_list())
         column_names = stocks_dividends.columns.to_list()
         new_column_names = []
         for name in column_names:
             new_column_names.append(sanitized_column_name(name))
         stocks_dividends.columns = new_column_names
-        print(stocks_dividends.head(1))
+        logger.info(stocks_dividends.head(1))
 
     @unittest.skip("Skipped")
     def test_sanitize_column_name(self):
-        print(sanitized_column_name("123 (a..) P/E-"))
+        logger.info(sanitized_column_name("123 (a..) P/E-"))

@@ -27,16 +27,20 @@ export function Database({ stack }: StackContext) {
     primaryIndex: { partitionKey: "country", sortKey: "symbol" },
   });
 
-  // Create the Stocks_Dividends table -- TODO
+  // Create the Stocks_Dividends table
   const stocksDividendsTable = new Table(
     stack,
     process.env.STOCKS_DIVIDENDS_TABLE,
     {
       fields: {
-        symbol: "string",
         country: "string",
+        row_id: "string",
+        symbol: "string",
       },
-      primaryIndex: { partitionKey: "country", sortKey: "symbol" },
+      primaryIndex: { partitionKey: "country", sortKey: "row_id" },
+      globalIndexes: {
+        symbolDateIndex: { partitionKey: "symbol", sortKey: "date" },
+      },
     }
   );
 
