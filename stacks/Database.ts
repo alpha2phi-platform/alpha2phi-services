@@ -36,6 +36,7 @@ export function Database({ stack }: StackContext) {
         country: "string",
         row_id: "string",
         symbol: "string",
+        date: "string",
       },
       primaryIndex: { partitionKey: "country", sortKey: "row_id" },
       globalIndexes: {
