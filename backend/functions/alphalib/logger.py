@@ -1,7 +1,5 @@
 import logging
 
-from . import __name__
-
 
 def create_logger():
     logger = logging.getLogger(__name__)

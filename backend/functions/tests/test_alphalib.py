@@ -4,12 +4,17 @@ import time
 import unittest
 import unittest.mock
 
+from pandas.core.dtypes.missing import notnull
+
 # Set the library path
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
-from alphalib import (get_current_time_utc, get_stock_countries,
-                      get_stock_dividends, get_stock_info, get_stocks, logger,
-                      parse_datetime, sanitized_column_name)
+from alphalib.data_sources import (get_stock_countries, get_stock_dividends,
+                                   get_stock_info, get_stocks,
+                                   sanitized_column_name)
+from alphalib.logger import logger
+from alphalib.models import Stock
+from alphalib.utils import get_current_time_utc, parse_datetime
 
 
 class TestAlphalib(unittest.TestCase):
@@ -38,14 +43,17 @@ class TestAlphalib(unittest.TestCase):
     def test_logger(self):
         logger.info("test_logger")
 
+    # @unittest.skip("Skipped")
     def test_set_ts_iso8601(self):
         start = get_current_time_utc()
         time.sleep(1)
         end = get_current_time_utc()
-
-        logger.info(start, end)
-        dt = parse_datetime(start)
-        print(dt)
+        print(start, end)
+        dt_start = parse_datetime(start)
+        dt_end = parse_datetime(end)
+        dt_diff = dt_end - dt_start
+        days_diff = round(dt_diff.total_seconds() / 60 / 24)
+        print(days_diff)
 
     @unittest.skip("Skipped")
     def test_get_stock_countries(self):
@@ -83,3 +91,19 @@ class TestAlphalib(unittest.TestCase):
     @unittest.skip("Skipped")
     def test_sanitize_column_name(self):
         logger.info(sanitized_column_name("123 (a..) P/E-"))
+
+    @unittest.skip("Skipped")
+    def test_stock_model(self):
+        stock = {
+            "info_update_datetime": None,
+            "currency": "USD",
+            "symbol": "ZVO",
+            "full_name": "Zovio Inc",
+            "name": "Zovio",
+            "country": "united states",
+            "isin": "US98979V1026",
+            "inserted_datetime": "2022-05-22T12:47:55+00:00",
+        }
+        model = Stock(**stock)
+        print(model)
+        self.assertIsNotNone(model.name)

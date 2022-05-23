@@ -20,3 +20,19 @@ def parse_datetime(iso_time: str) -> datetime:
             datetime: datetime object
     """
     return datetime.fromisoformat(iso_time)
+
+
+def days_diff(start_time: datetime, end_time: datetime) -> int:
+    """Difference in days between two datetime objects
+
+    Args:
+        start_time (datetime): start time
+        end_time (datetime): end time
+
+    Returns:
+        int: difference in days
+    """
+    if start_time is None or end_time is None:
+        return -1
+    diff = end_time - start_time
+    return round(diff.total_seconds() / 60 / 24)

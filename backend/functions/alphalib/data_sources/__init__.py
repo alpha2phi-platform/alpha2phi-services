@@ -6,9 +6,9 @@ import boto3
 import investpy
 import pandas as pd
 
-from .config import COUNTRIES_TABLE_NAME, STOCKS_TABLE_NAME
-from .logger import logger
-from .utils import get_current_time_utc
+from ..config import COUNTRIES_TABLE_NAME, STOCKS_TABLE_NAME
+from ..logger import logger
+from ..utils import get_current_time_utc
 
 
 def get_stock_countries() -> list[str]:
@@ -117,12 +117,6 @@ def update_stocks(stocks):
     with stocks_table.batch_writer() as batch:
         for _, row in stocks.iterrows():
             batch.put_item(json.loads(row.to_json()))
-
-
-def download_stocks_details(table_name):
-    dynamodb = boto3.resource("dynamodb")
-    stocks_table = dynamodb.Table(table_name)
-    return stocks_table.scan()
 
 
 # stocks.apply(update_stock, axis=1)
