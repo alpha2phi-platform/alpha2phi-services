@@ -4,3 +4,5 @@ botocore
 backtrader
 yfinance
 pydantic
+scipy
+matplotlib

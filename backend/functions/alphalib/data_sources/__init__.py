@@ -118,7 +118,8 @@ def update_stocks(stocks):
         for _, row in stocks.iterrows():
             batch.put_item(json.loads(row.to_json()))
 
-def get_stocks(table_name):
+
+def download_stocks_details(table_name):
     dynamodb = boto3.resource("dynamodb")
     stocks_table = dynamodb.Table(table_name)
     return stocks_table.scan()
