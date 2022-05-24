@@ -4,17 +4,14 @@ import time
 import unittest
 import unittest.mock
 
-from pandas.core.dtypes.missing import notnull
-
 # Set the library path
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 from alphalib.data_sources import (get_stock_countries, get_stock_dividends,
                                    get_stock_info, get_stocks,
                                    sanitized_column_name)
-from alphalib.logger import logger
 from alphalib.models import Stock
-from alphalib.utils import get_current_time_utc, parse_datetime
+from alphalib.utils import get_current_time_utc, logger, parse_datetime
 
 
 class TestAlphalib(unittest.TestCase):
@@ -43,7 +40,7 @@ class TestAlphalib(unittest.TestCase):
     def test_logger(self):
         logger.info("test_logger")
 
-    # @unittest.skip("Skipped")
+    @unittest.skip("Skipped")
     def test_set_ts_iso8601(self):
         start = get_current_time_utc()
         time.sleep(1)

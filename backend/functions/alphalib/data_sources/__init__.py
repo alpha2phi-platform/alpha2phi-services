@@ -6,9 +6,8 @@ import boto3
 import investpy
 import pandas as pd
 
-from ..config import COUNTRIES_TABLE_NAME, STOCKS_TABLE_NAME
-from ..logger import logger
-from ..utils import get_current_time_utc
+from .. import COUNTRIES_TABLE_NAME, STOCKS_TABLE_NAME
+from ..utils import get_current_time_utc, logger
 
 
 def get_stock_countries() -> list[str]:
