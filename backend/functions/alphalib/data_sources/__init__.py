@@ -7,7 +7,7 @@ import investpy
 import pandas as pd
 
 from .. import COUNTRIES_TABLE_NAME, STOCKS_TABLE_NAME
-from ..utils import get_current_time_utc, logger
+from ..utils import convert_iso_format, get_current_time_utc, logger
 
 
 def get_stock_countries() -> list[str]:
@@ -110,7 +110,7 @@ def update_stocks(stocks):
     stocks_table = dynamodb.Table(STOCKS_TABLE_NAME)
 
     # Add timestamp fields
-    stocks["inserted_datetime"] = get_current_time_utc()
+    stocks["inserted_datetime"] = convert_iso_format(get_current_time_utc())
     stocks["info_update_datetime"] = None
 
     with stocks_table.batch_writer() as batch:

@@ -4,6 +4,8 @@ import time
 import unittest
 import unittest.mock
 
+import pandas as pd
+
 # Set the library path
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
@@ -11,7 +13,7 @@ from alphalib.data_sources import (get_stock_countries, get_stock_dividends,
                                    get_stock_info, get_stocks,
                                    sanitized_column_name)
 from alphalib.models import Stock
-from alphalib.utils import get_current_time_utc, logger, parse_datetime
+from alphalib.utils import get_current_time_utc, logger
 
 
 class TestAlphalib(unittest.TestCase):
@@ -40,7 +42,7 @@ class TestAlphalib(unittest.TestCase):
     def test_logger(self):
         logger.info("test_logger")
 
-    # @unittest.skip("Skipped")
+    @unittest.skip("Skipped")
     def test_set_ts_iso8601(self):
         start = get_current_time_utc()
         time.sleep(1)
@@ -63,7 +65,7 @@ class TestAlphalib(unittest.TestCase):
 
     @unittest.skip("Skipped")
     def test_get_stock_info(self):
-        stocks = get_stock_info("AAPL", "united states")
+        stocks = get_stock_info("united states", "AAPL")
         column_names = stocks.columns.to_list()
         new_column_names = []
         for name in column_names:
@@ -91,16 +93,35 @@ class TestAlphalib(unittest.TestCase):
 
     @unittest.skip("Skipped")
     def test_stock_model(self):
-        stock = {
-            "info_update_datetime": None,
-            "currency": "USD",
-            "symbol": "ZVO",
-            "full_name": "Zovio Inc",
-            "name": "Zovio",
-            "country": "united states",
-            "isin": "US98979V1026",
-            "inserted_datetime": "2022-05-22T12:47:55+00:00",
-        }
-        model = Stock(**stock)
-        print(model)
-        self.assertIsNotNone(model.name)
+        stocks = [
+            {
+                "info_update_datetime": None,
+                "currency": "USD",
+                "symbol": "ZVO",
+                "full_name": "Zovio Inc",
+                "name": "Zovio",
+                "country": "united states",
+                "isin": "US98979V1026",
+                "inserted_datetime": "2022-05-22T12:47:55+00:00",
+            }
+        ]
+        for stock in stocks:
+            model = Stock(**stock)
+            print(model)
+
+    # @unittest.skip("Skipped")
+    def test_list_to_dataframe(self):
+        stocks = [
+            {
+                "info_update_datetime": None,
+                "currency": "USD",
+                "symbol": "ZVO",
+                "full_name": "Zovio Inc",
+                "name": "Zovio",
+                "country": "united states",
+                "isin": "US98979V1026",
+                "inserted_datetime": "2022-05-22T12:47:55+00:00",
+            }
+        ]
+        df_stocks = pd.DataFrame.from_dict(stocks)
+        print(df_stocks.dtypes)

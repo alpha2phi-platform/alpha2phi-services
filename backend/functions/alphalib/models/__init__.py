@@ -1,6 +1,7 @@
 from dataclasses import dataclass
-from datetime import datetime
-from typing import Optional
+
+# from datetime import datetime
+# from typing import Optional
 
 
 @dataclass
@@ -12,11 +13,11 @@ class Stock:
     symbol: str
     name: str
     full_name: str
-    info_update_datetime: Optional[datetime]
+    info_update_datetime: str
     currency: str
     country: str
     isin: str
-    inserted_datetime: datetime
+    inserted_datetime: str
 
 
 # TODO: Add more fields

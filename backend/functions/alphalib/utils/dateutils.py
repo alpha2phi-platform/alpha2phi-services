@@ -10,6 +10,18 @@ def get_current_time_utc() -> datetime:
     return datetime.utcnow().replace(tzinfo=timezone.utc, microsecond=0)  # .isoformat()
 
 
+def convert_iso_format(dt: datetime):
+    """Convert datetime object to iso format
+
+    Args:
+        dt (datetime): datetime object
+
+    Returns:
+        str: datetime object in iso format
+    """
+    return dt.isoformat()
+
+
 def parse_datetime(iso_time: str) -> datetime:
     """Get datetime object from iso time string
 
@@ -19,6 +31,8 @@ def parse_datetime(iso_time: str) -> datetime:
     Returns:
             datetime: datetime object
     """
+    if str is None:
+        return datetime.min
     return datetime.fromisoformat(iso_time)
 
 
