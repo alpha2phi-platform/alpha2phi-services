@@ -40,17 +40,17 @@ class TestAlphalib(unittest.TestCase):
     def test_logger(self):
         logger.info("test_logger")
 
-    @unittest.skip("Skipped")
+    # @unittest.skip("Skipped")
     def test_set_ts_iso8601(self):
         start = get_current_time_utc()
         time.sleep(1)
         end = get_current_time_utc()
         print(start, end)
-        dt_start = parse_datetime(start)
-        dt_end = parse_datetime(end)
-        dt_diff = dt_end - dt_start
-        days_diff = round(dt_diff.total_seconds() / 60 / 24)
-        print(days_diff)
+        # dt_start = parse_datetime(start)
+        # dt_end = parse_datetime(end)
+        # dt_diff = dt_end - dt_start
+        # days_diff = round(dt_diff.total_seconds() / 60 / 24)
+        # print(days_diff)
 
     @unittest.skip("Skipped")
     def test_get_stock_countries(self):

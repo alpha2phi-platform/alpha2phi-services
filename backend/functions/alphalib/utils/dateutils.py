@@ -1,13 +1,13 @@
 from datetime import datetime, timezone
 
 
-def get_current_time_utc() -> str:
+def get_current_time_utc() -> datetime:
     """Get current time in iso format
 
     Returns:
         str: current time in iso format
     """
-    return datetime.utcnow().replace(tzinfo=timezone.utc, microsecond=0).isoformat()
+    return datetime.utcnow().replace(tzinfo=timezone.utc, microsecond=0)  # .isoformat()
 
 
 def parse_datetime(iso_time: str) -> datetime:
@@ -33,6 +33,6 @@ def days_diff(start_time: datetime, end_time: datetime) -> int:
         int: difference in days
     """
     if start_time is None or end_time is None:
-        return -1
+        return 999
     diff = end_time - start_time
     return round(diff.total_seconds() / 60 / 24)

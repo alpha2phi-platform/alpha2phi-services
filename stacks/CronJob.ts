@@ -28,6 +28,7 @@ export function CronJob({ stack }: StackContext) {
 
   // Cron Job to get the stock info and dividends
   const cron_get_stocks_info = new Cron(stack, "cron_get_stocks_info", {
+    // schedule: "cron(0 8 1 * ? *)", // Run at 8:00 am (UTC+0) every 1st day of the month
     schedule: "rate(1 minute)",
     job: {
       function: {
@@ -37,7 +38,7 @@ export function CronJob({ stack }: StackContext) {
           COUNTRIES_TABLE: database.countriesTable.tableName,
           STOCKS_TABLE: database.stocksTable.tableName,
           STOCKS_INFO_TABLE: database.stocksInfoTable.tableName,
-          STOCKS_DIVIDENS_TABLE: database.stocksDividendsTable.tableName,
+          STOCKS_DIVIDENDS_TABLE: database.stocksDividendsTable.tableName,
         },
         permissions: [
           database.stocksTable,

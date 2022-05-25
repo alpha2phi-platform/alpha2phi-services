@@ -21,10 +21,10 @@ export function Database({ stack }: StackContext) {
   // Create the Stocks_Info table
   const stocksInfoTable = new Table(stack, process.env.STOCKS_INFO_TABLE, {
     fields: {
-      symbol: "string",
+      stock_symbol: "string",
       country: "string",
     },
-    primaryIndex: { partitionKey: "country", sortKey: "symbol" },
+    primaryIndex: { partitionKey: "country", sortKey: "stock_symbol" },
   });
 
   // Create the Stocks_Dividends table

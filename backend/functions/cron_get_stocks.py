@@ -1,5 +1,6 @@
-from .alphalib import (COUNTRY, get_stock_countries, get_stocks,
-                       update_countries, update_stocks)
+from .alphalib import COUNTRY
+from .alphalib.data_sources import (get_stock_countries, get_stocks,
+                                    update_countries, update_stocks)
 
 
 def handler(event, context):

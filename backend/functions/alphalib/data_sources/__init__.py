@@ -25,7 +25,7 @@ def get_stocks(country: str) -> pd.DataFrame:
     return investpy.stocks.get_stocks(country)
 
 
-def get_stock_info(symbol, country) -> pd.DataFrame:
+def get_stock_info(country, symbol) -> pd.DataFrame:
     try:
         stock_info = investpy.get_stock_information(symbol, country)
         stock_info["country"] = country
