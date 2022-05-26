@@ -110,8 +110,11 @@ def update_stocks(stocks):
     stocks_table = dynamodb.Table(STOCKS_TABLE_NAME)
 
     # Add timestamp fields
-    stocks["inserted_datetime"] = convert_iso_format(get_current_time_utc())
-    stocks["info_update_datetime"] = None
+    now = get_current_time_utc()
+    stocks["update_datetime_isoformat"] = convert_iso_format(now)
+    stocks["update_datetime"] = now
+    # stocks["info_update_datetime_isoformat"] = None
+    # stocks["info_update_datetime"] = None
 
     with stocks_table.batch_writer() as batch:
         for _, row in stocks.iterrows():

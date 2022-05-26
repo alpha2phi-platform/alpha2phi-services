@@ -3,6 +3,7 @@ from dataclasses import asdict
 from decimal import Decimal
 
 import boto3
+import pandas as pd
 
 from .alphalib import STOCKS_INFO_TABLE_NAME, STOCKS_TABLE_NAME
 from .alphalib.data_sources import get_stock_info, sanitized_column_name
@@ -11,6 +12,20 @@ from .alphalib.utils import (convert_iso_format, days_diff,
                              get_current_time_utc, logger, parse_datetime)
 
 DAYS_LAST_UPDATE = 10
+
+
+def get_stocks_from_db() -> pd.DataFrame:
+    # Get all stocks from databae
+    dynamodb = boto3.resource("dynamodb")
+    stocks_table = dynamodb.Table(STOCKS_TABLE_NAME)
+
+    # response = stocks_table.scan()
+    # stocks = response["Items"]
+    # count = response["Count"]
+
+    # Convert from list of objects to data frame - TODO:
+
+    return pd.DataFrame()
 
 
 def handler(event, context):
@@ -23,11 +38,18 @@ def handler(event, context):
 
     stocks = response["Items"]
     count = response["Count"]
+    logger.info(f"Total stocks - {count}")
 
     # Convert from list of objects to data frame - TODO:
 
+    # stocks = get_stocks_from_db()
+    # logger.info(f"Total stocks - {len(stocks)}")
+    #
+    # return {}
+
+    # ----
+
     # Get info for each stock
-    logger.info(f"Total stocks - {count}")
     now = get_current_time_utc()
 
     # Dividend table
@@ -37,9 +59,8 @@ def handler(event, context):
     new_column_names = []
     for row in stocks:
         stock = Stock(**row)
-        days_since_last_update = days_diff(
-            parse_datetime(stock.info_update_datetime), now
-        )
+        print("update time -", stock.update_datetime)
+        days_since_last_update = days_diff(stock.info_update_datetime, now)
         if days_since_last_update > 10:
             logger.info(f"Getting info for {stock.country} - {stock.symbol}")
             stock_info = get_stock_info(stock.country, stock.symbol)
@@ -57,7 +78,8 @@ def handler(event, context):
                     batch.put_item(json.loads(info.to_json(), parse_float=Decimal))
 
             # Update the stock update datetime
-            stock.info_update_datetime = convert_iso_format(get_current_time_utc())
+            stock.info_update_datetime_isoformat = convert_iso_format(now)
+            stock.info_update_datetime = now
             stocks_table.put_item(Item=asdict(stock))
 
         break

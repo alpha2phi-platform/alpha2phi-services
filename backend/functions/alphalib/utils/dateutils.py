@@ -48,5 +48,7 @@ def days_diff(start_time: datetime, end_time: datetime) -> int:
     """
     if start_time is None or end_time is None:
         return 999
-    diff = end_time - start_time
+    diff = end_time.replace(tzinfo=timezone.utc) - start_time.replace(
+        tzinfo=timezone.utc
+    )
     return round(diff.total_seconds() / 60 / 24)

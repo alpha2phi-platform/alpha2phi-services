@@ -3,6 +3,8 @@ import sys
 import time
 import unittest
 import unittest.mock
+from datetime import datetime
+from decimal import Decimal
 
 import pandas as pd
 
@@ -109,7 +111,7 @@ class TestAlphalib(unittest.TestCase):
             model = Stock(**stock)
             print(model)
 
-    # @unittest.skip("Skipped")
+    @unittest.skip("Skipped")
     def test_list_to_dataframe(self):
         stocks = [
             {
@@ -125,3 +127,10 @@ class TestAlphalib(unittest.TestCase):
         ]
         df_stocks = pd.DataFrame.from_dict(stocks)
         print(df_stocks.dtypes)
+
+    # @unittest.skip("Skipped")
+    def test_decimal_to_datetime(self):
+        value = 1653536957
+        dt = datetime.fromtimestamp(value)
+        print(value, dt)
+        print(dt.timestamp())
