@@ -4,7 +4,6 @@ import time
 import unittest
 import unittest.mock
 from datetime import datetime, timezone
-from decimal import Decimal
 
 import pandas as pd
 
@@ -135,6 +134,7 @@ class TestAlphalib(unittest.TestCase):
         print(value, dt)
         print(dt.timestamp())
 
+    @unittest.skip("Skipped")
     def test_convert_timestamp(self):
         dt = datetime.min
         print(dt.isoformat())

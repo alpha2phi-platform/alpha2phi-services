@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from datetime import datetime, timezone
 
+from ..utils import dateutils
+
 
 @dataclass
 class Stock:
@@ -16,8 +18,8 @@ class Stock:
     isin: str
     update_datetime: float
     update_datetime_isoformat: str
-    info_update_datetime: float = datetime.min.replace( tzinfo=timezone.utc).timestamp()  
-    info_update_datetime_isoformat: str = datetime.min.isoformat()
+    info_update_datetime: float = dateutils.to_epoch_time(datetime.min)
+    info_update_datetime_isoformat: str = dateutils.to_isoformat(datetime.min)
 
 
 # TODO: Add more fields
