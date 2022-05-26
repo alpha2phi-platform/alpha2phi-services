@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 
 
-def get_current_time_utc() -> datetime:
+def current_time_utc() -> datetime:
     """Get current time in iso format
 
     Returns:
@@ -10,7 +10,7 @@ def get_current_time_utc() -> datetime:
     return datetime.utcnow().replace(tzinfo=timezone.utc, microsecond=0)  # .isoformat()
 
 
-def convert_iso_format(dt: datetime):
+def to_isoformat(dt: datetime):
     """Convert datetime object to iso format
 
     Args:
@@ -22,7 +22,34 @@ def convert_iso_format(dt: datetime):
     return dt.isoformat()
 
 
-def parse_datetime(iso_time: str) -> datetime:
+def to_epoch_time(dt: datetime) -> float:
+    """Convert datetime object to epoch time
+
+    Args:
+        dt (datetime): datetime object
+
+    Returns:
+        float: datetime object in epoch time
+    """
+    return dt.replace(tzinfo=timezone.utc).timestamp()
+
+
+def from_epoch_time(value: float) -> datetime:
+    """Get datetime object from epoch time
+
+    Generates a datetime object from epoch time
+
+    Args:
+        value: epoch time
+
+    Returns:
+        datetime: datetime object
+    """
+
+    return datetime.fromtimestamp(value, tz=timezone.utc)
+
+
+def from_isoformat(iso_time: str) -> datetime:
     """Get datetime object from iso time string
 
     Args:
@@ -32,7 +59,10 @@ def parse_datetime(iso_time: str) -> datetime:
             datetime: datetime object
     """
     if str is None:
-        return datetime.min
+        return datetime.min.replace(
+            tzinfo=timezone.utc
+        )  # https://bugs.python.org/issue31212
+
     return datetime.fromisoformat(iso_time)
 
 

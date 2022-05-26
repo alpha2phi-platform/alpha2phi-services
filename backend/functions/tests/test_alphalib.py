@@ -3,7 +3,7 @@ import sys
 import time
 import unittest
 import unittest.mock
-from datetime import datetime
+from datetime import datetime, timezone
 from decimal import Decimal
 
 import pandas as pd
@@ -15,7 +15,7 @@ from alphalib.data_sources import (get_stock_countries, get_stock_dividends,
                                    get_stock_info, get_stocks,
                                    sanitized_column_name)
 from alphalib.models import Stock
-from alphalib.utils import get_current_time_utc, logger
+from alphalib.utils import current_time_utc, logger
 
 
 class TestAlphalib(unittest.TestCase):
@@ -46,9 +46,9 @@ class TestAlphalib(unittest.TestCase):
 
     @unittest.skip("Skipped")
     def test_set_ts_iso8601(self):
-        start = get_current_time_utc()
+        start = current_time_utc()
         time.sleep(1)
-        end = get_current_time_utc()
+        end = current_time_utc()
         print(start, end)
         # dt_start = parse_datetime(start)
         # dt_end = parse_datetime(end)
@@ -128,9 +128,20 @@ class TestAlphalib(unittest.TestCase):
         df_stocks = pd.DataFrame.from_dict(stocks)
         print(df_stocks.dtypes)
 
-    # @unittest.skip("Skipped")
+    @unittest.skip("Skipped")
     def test_decimal_to_datetime(self):
         value = 1653536957
         dt = datetime.fromtimestamp(value)
         print(value, dt)
         print(dt.timestamp())
+
+    def test_convert_timestamp(self):
+        dt = datetime.min
+        print(dt.isoformat())
+        print(dt.replace(tzinfo=timezone.utc))
+        print(dt.replace(tzinfo=timezone.utc).timestamp())
+        print(
+            dt.fromtimestamp(
+                dt.replace(tzinfo=timezone.utc).timestamp(), tz=timezone.utc
+            )
+        )

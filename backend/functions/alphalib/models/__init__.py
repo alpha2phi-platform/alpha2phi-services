@@ -1,6 +1,5 @@
 from dataclasses import dataclass
-from datetime import datetime
-from typing import Optional
+from datetime import datetime, timezone
 
 
 @dataclass
@@ -15,9 +14,9 @@ class Stock:
     currency: str
     country: str
     isin: str
-    update_datetime: datetime
+    update_datetime: float
     update_datetime_isoformat: str
-    info_update_datetime: datetime = datetime.min
+    info_update_datetime: float = datetime.min.replace( tzinfo=timezone.utc).timestamp()  
     info_update_datetime_isoformat: str = datetime.min.isoformat()
 
 

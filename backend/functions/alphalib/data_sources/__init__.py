@@ -1,13 +1,14 @@
 import json
 import re
 import time
+from decimal import Decimal
 
 import boto3
 import investpy
 import pandas as pd
 
 from .. import COUNTRIES_TABLE_NAME, STOCKS_TABLE_NAME
-from ..utils import convert_iso_format, get_current_time_utc, logger
+from ..utils import to_isoformat, current_time_utc, logger
 
 
 def get_stock_countries() -> list[str]:
@@ -110,15 +111,15 @@ def update_stocks(stocks):
     stocks_table = dynamodb.Table(STOCKS_TABLE_NAME)
 
     # Add timestamp fields
-    now = get_current_time_utc()
-    stocks["update_datetime_isoformat"] = convert_iso_format(now)
-    stocks["update_datetime"] = now
+    now = current_time_utc()
+    stocks["update_datetime_isoformat"] = to_isoformat(now)
+    stocks["update_datetime"] = now.timestamp()
     # stocks["info_update_datetime_isoformat"] = None
     # stocks["info_update_datetime"] = None
 
     with stocks_table.batch_writer() as batch:
         for _, row in stocks.iterrows():
-            batch.put_item(json.loads(row.to_json()))
+            batch.put_item(json.loads(row.to_json(), parse_float=Decimal))
 
 
 # stocks.apply(update_stock, axis=1)
