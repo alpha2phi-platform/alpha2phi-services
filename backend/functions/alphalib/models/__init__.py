@@ -1,5 +1,6 @@
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import datetime
+from decimal import Decimal
 
 from ..utils import dateutils
 
@@ -16,9 +17,9 @@ class Stock:
     currency: str
     country: str
     isin: str
-    update_datetime: float
+    update_datetime: Decimal
     update_datetime_isoformat: str
-    info_update_datetime: float = dateutils.to_epoch_time(datetime.min)
+    info_update_datetime: Decimal = Decimal(dateutils.to_epoch_time(datetime.min))
     info_update_datetime_isoformat: str = dateutils.to_isoformat(datetime.min)
 
 

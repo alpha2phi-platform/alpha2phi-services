@@ -8,14 +8,18 @@ import pandas as pd
 from .alphalib import STOCKS_INFO_TABLE_NAME, STOCKS_TABLE_NAME
 from .alphalib.data_sources import get_stock_info, sanitized_column_name
 from .alphalib.models import Stock
-from .alphalib.utils import (current_time_utc, days_diff, from_isoformat,
-                             logger, to_isoformat)
+from .alphalib.utils import dateutils
+from .alphalib.utils.logger import logger
 
 DAYS_LAST_UPDATE = 10
 
 
 def get_stocks_from_db() -> pd.DataFrame:
-    # Get all stocks from databae
+    """Get all stocks from database
+
+    Returns:
+        Pandas DataFrame
+    """
     dynamodb = boto3.resource("dynamodb")
     stocks_table = dynamodb.Table(STOCKS_TABLE_NAME)
 
@@ -50,7 +54,7 @@ def handler(event, context):
     # ----
 
     # Get info for each stock
-    now = current_time_utc()
+    now = dateutils.current_time_utc()
 
     # Dividend table
     dynamodb = boto3.resource("dynamodb")
@@ -59,28 +63,32 @@ def handler(event, context):
     new_column_names = []
     for row in stocks:
         stock = Stock(**row)
-        print(stock)
-        # days_since_last_update = days_diff(stock.info_update_datetime, now)
-        # if days_since_last_update > 10:
-        #     logger.info(f"Getting info for {stock.country} - {stock.symbol}")
-        #     stock_info = get_stock_info(stock.country, stock.symbol)
-        #
-        #     # Set the new column name names
-        #     if len(new_column_names) == 0:
-        #         column_names = stock_info.columns.to_list()
-        #         for name in column_names:
-        #             new_column_names.append(sanitized_column_name(name))
-        #
-        #     # Update the stock info
-        #     stock_info.columns = new_column_names
-        #     with stocks_info_table.batch_writer() as batch:
-        #         for _, info in stock_info.iterrows():
-        #             batch.put_item(json.loads(info.to_json(), parse_float=Decimal))
-        #
-        #     # Update the stock update datetime
-        #     stock.info_update_datetime_isoformat = convert_iso_format(now)
-        #     stock.info_update_datetime = now
-        #     stocks_table.put_item(Item=asdict(stock))
+        days_since_last_update = dateutils.days_diff(
+            dateutils.from_epoch_time(stock.info_update_datetime), now
+        )
+        if days_since_last_update > 10:
+            logger.info(f"Getting info for {stock.country} - {stock.symbol}")
+            stock_info = get_stock_info(stock.country, stock.symbol)
+
+            # Set the new column name names
+            if len(new_column_names) == 0:
+                column_names = stock_info.columns.to_list()
+                for name in column_names:
+                    new_column_names.append(sanitized_column_name(name))
+
+            # Update the stock info
+            stock_info.columns = new_column_names
+            with stocks_info_table.batch_writer() as batch:
+                for _, info in stock_info.iterrows():
+                    batch.put_item(json.loads(info.to_json(), parse_float=Decimal))
+
+            # Update the stock update datetime
+            stock.info_update_datetime_isoformat = dateutils.to_isoformat(now)
+            stock.info_update_datetime = dateutils.to_epoch_time(now)
+            print(asdict(stock))
+            stocks_table.put_item(
+                Item=json.loads(json.dumps(asdict(stock)), parse_float=Decimal)
+            )
 
         break
 

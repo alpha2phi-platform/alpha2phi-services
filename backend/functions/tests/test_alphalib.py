@@ -1,9 +1,12 @@
+import json
 import os
 import sys
 import time
 import unittest
 import unittest.mock
+from dataclasses import asdict
 from datetime import datetime, timezone
+from decimal import Decimal
 
 import pandas as pd
 
@@ -92,7 +95,7 @@ class TestAlphalib(unittest.TestCase):
     def test_sanitize_column_name(self):
         logger.info(sanitized_column_name("123 (a..) P/E-"))
 
-    @unittest.skip("Skipped")
+    # @unittest.skip("Skipped")
     def test_stock_model(self):
         stocks = [
             {
@@ -103,12 +106,13 @@ class TestAlphalib(unittest.TestCase):
                 "name": "Zovio",
                 "country": "united states",
                 "isin": "US98979V1026",
-                "inserted_datetime": "2022-05-22T12:47:55+00:00",
+                "update_datetime_isoformat": "2022-05-22T12:47:55+00:00",
+                "update_datetime": 123456789,
             }
         ]
         for stock in stocks:
             model = Stock(**stock)
-            print(model)
+            print(json.loads(json.dumps(asdict(model)), parse_float=Decimal))
 
     @unittest.skip("Skipped")
     def test_list_to_dataframe(self):
@@ -121,7 +125,7 @@ class TestAlphalib(unittest.TestCase):
                 "name": "Zovio",
                 "country": "united states",
                 "isin": "US98979V1026",
-                "inserted_datetime": "2022-05-22T12:47:55+00:00",
+                "update_datetime": "2022-05-22T12:47:55+00:00",
             }
         ]
         df_stocks = pd.DataFrame.from_dict(stocks)

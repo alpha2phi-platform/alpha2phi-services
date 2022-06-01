@@ -8,7 +8,7 @@ import investpy
 import pandas as pd
 
 from .. import COUNTRIES_TABLE_NAME, STOCKS_TABLE_NAME
-from ..utils import to_isoformat, current_time_utc, logger
+from ..utils import current_time_utc, logger, to_epoch_time, to_isoformat
 
 
 def get_stock_countries() -> list[str]:
@@ -113,7 +113,8 @@ def update_stocks(stocks):
     # Add timestamp fields
     now = current_time_utc()
     stocks["update_datetime_isoformat"] = to_isoformat(now)
-    stocks["update_datetime"] = now.timestamp()
+    stocks["update_datetime"] = to_epoch_time(now)
+    # Not required
     # stocks["info_update_datetime_isoformat"] = None
     # stocks["info_update_datetime"] = None
 
