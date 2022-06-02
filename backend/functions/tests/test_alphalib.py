@@ -95,7 +95,7 @@ class TestAlphalib(unittest.TestCase):
     def test_sanitize_column_name(self):
         logger.info(sanitized_column_name("123 (a..) P/E-"))
 
-    # @unittest.skip("Skipped")
+    @unittest.skip("Skipped")
     def test_stock_model(self):
         stocks = [
             {
@@ -149,3 +149,21 @@ class TestAlphalib(unittest.TestCase):
                 dt.replace(tzinfo=timezone.utc).timestamp(), tz=timezone.utc
             )
         )
+
+    # @unittest.skip("Skipped")
+    def test_tojson(self):
+        stocks = [
+            {
+                "info_update_datetime": None,
+                "currency": "USD",
+                "symbol": "ZVO",
+                "full_name": "Zovio Inc",
+                "name": "Zovio",
+                "country": "united states",
+                "isin": "US98979V1026",
+                "update_datetime_isoformat": "2022-05-22T12:47:55+00:00",
+                "update_datetime": Decimal(123456789),
+            }
+        ]
+        model = Stock(**stocks[0])
+        model.to_json()
