@@ -29,7 +29,7 @@ def json_encoder(cls):
             return super().default(o)
 
     def to_json(self):
-        print(json.dumps(self, cls=JSONEncoder))
+        return json.dumps(self, cls=JSONEncoder)
 
     cls.to_json = to_json
     return cls
@@ -50,6 +50,7 @@ class Stock:
     isin: str
     update_datetime: Decimal
     update_datetime_isoformat: str
+
     info_update_datetime: Decimal = Decimal(dateutils.to_epoch_time(datetime.min))
     info_update_datetime_isoformat: str = dateutils.to_isoformat(datetime.min)
 

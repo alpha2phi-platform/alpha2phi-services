@@ -85,10 +85,7 @@ def handler(event, context):
             # Update the stock update datetime
             stock.info_update_datetime_isoformat = dateutils.to_isoformat(now)
             stock.info_update_datetime = dateutils.to_epoch_time(now)
-            print(asdict(stock))
-            stocks_table.put_item(
-                Item=json.loads(json.dumps(asdict(stock)), parse_float=Decimal)
-            )
+            stocks_table.put_item(Item=json.loads(stock.to_json(), parse_float=Decimal))
 
         break
 

@@ -166,4 +166,4 @@ class TestAlphalib(unittest.TestCase):
             }
         ]
         model = Stock(**stocks[0])
-        model.to_json()
+        print(model.to_json())
