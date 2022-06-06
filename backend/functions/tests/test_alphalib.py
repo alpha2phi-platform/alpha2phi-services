@@ -166,4 +166,5 @@ class TestAlphalib(unittest.TestCase):
             }
         ]
         model = Stock(**stocks[0])
+        # model.update_datetime = 12345.0
         print(model.to_json())

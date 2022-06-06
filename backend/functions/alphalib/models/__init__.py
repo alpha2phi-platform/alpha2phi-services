@@ -54,6 +54,13 @@ class Stock:
     info_update_datetime: Decimal = Decimal(dateutils.to_epoch_time(datetime.min))
     info_update_datetime_isoformat: str = dateutils.to_isoformat(datetime.min)
 
+    # def __setattr__(self, prop, val):
+    # if val is not None and (
+    #     prop == "update_datetime" or prop == "info_update_datetime"
+    # ):
+    #     super().__setattr__(prop, Decimal(val))
+    # super().__setattr__(prop, val)
+
 
 # TODO: Add more fields
 @dataclass
