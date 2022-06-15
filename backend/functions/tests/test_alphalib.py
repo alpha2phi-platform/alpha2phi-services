@@ -42,11 +42,11 @@ class TestAlphalib(unittest.TestCase):
     def tearDown(self):
         print("\n---------------- Test End ----------------\n")
 
-    @unittest.skip("Skipped")
+    # @unittest.skip("Skipped")
     def test_logger(self):
         logger.info("test_logger")
 
-    @unittest.skip("Skipped")
+    # @unittest.skip("Skipped")
     def test_set_ts_iso8601(self):
         start = current_time_utc()
         time.sleep(1)
@@ -58,16 +58,16 @@ class TestAlphalib(unittest.TestCase):
         # days_diff = round(dt_diff.total_seconds() / 60 / 24)
         # print(days_diff)
 
-    @unittest.skip("Skipped")
+    # @unittest.skip("Skipped")
     def test_get_stock_countries(self):
         logger.info(get_stock_countries())
 
-    @unittest.skip("Skipped")
+    # @unittest.skip("Skipped")
     def test_get_stocks(self):
         stocks = get_stocks("united states")
         logger.info(stocks.head(10))
 
-    @unittest.skip("Skipped")
+    # @unittest.skip("Skipped")
     def test_get_stock_info(self):
         stocks = get_stock_info("united states", "AAPL")
         column_names = stocks.columns.to_list()
@@ -80,7 +80,7 @@ class TestAlphalib(unittest.TestCase):
         # for _, row in stocks.iterrows():
         #     logger.info(json.loads(row.to_json()))
 
-    @unittest.skip("Skipped")
+    # @unittest.skip("Skipped")
     def test_get_stock_dividends(self):
         stocks_dividends = get_stock_dividends("GM", "united states")
         logger.info(stocks_dividends.columns.to_list())
@@ -91,11 +91,11 @@ class TestAlphalib(unittest.TestCase):
         stocks_dividends.columns = new_column_names
         logger.info(stocks_dividends.head(1))
 
-    @unittest.skip("Skipped")
+    # @unittest.skip("Skipped")
     def test_sanitize_column_name(self):
         logger.info(sanitized_column_name("123 (a..) P/E-"))
 
-    @unittest.skip("Skipped")
+    # @unittest.skip("Skipped")
     def test_stock_model(self):
         stocks = [
             {
@@ -114,7 +114,7 @@ class TestAlphalib(unittest.TestCase):
             model = Stock(**stock)
             print(json.loads(json.dumps(asdict(model)), parse_float=Decimal))
 
-    @unittest.skip("Skipped")
+    # @unittest.skip("Skipped")
     def test_list_to_dataframe(self):
         stocks = [
             {
@@ -131,14 +131,14 @@ class TestAlphalib(unittest.TestCase):
         df_stocks = pd.DataFrame.from_dict(stocks)
         print(df_stocks.dtypes)
 
-    @unittest.skip("Skipped")
+    # @unittest.skip("Skipped")
     def test_decimal_to_datetime(self):
         value = 1653536957
         dt = datetime.fromtimestamp(value)
         print(value, dt)
         print(dt.timestamp())
 
-    @unittest.skip("Skipped")
+    # @unittest.skip("Skipped")
     def test_convert_timestamp(self):
         dt = datetime.min
         print(dt.isoformat())

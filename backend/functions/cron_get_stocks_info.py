@@ -20,8 +20,13 @@ def get_stocks_from_db() -> pd.DataFrame:
     Returns:
         Pandas DataFrame
     """
+
+    # Stocks table
     dynamodb = boto3.resource("dynamodb")
     stocks_table = dynamodb.Table(STOCKS_TABLE_NAME)
+
+    # Current time
+    current_time = dateutils.current_time_utc()
 
     # response = stocks_table.scan()
     # stocks = response["Items"]
@@ -35,21 +40,18 @@ def get_stocks_from_db() -> pd.DataFrame:
 def handler(event, context):
 
     # Get all stocks from databae
-    dynamodb = boto3.resource("dynamodb")
-    stocks_table = dynamodb.Table(STOCKS_TABLE_NAME)
+    # dynamodb = boto3.resource("dynamodb")
+    # stocks_table = dynamodb.Table(STOCKS_TABLE_NAME)
+    # response = stocks_table.scan()
+    # stocks = response["Items"]
+    # count = response["Count"]
+    # logger.info(f"Total stocks - {count}")
 
-    response = stocks_table.scan()
+    # Get a list of stocks to process
+    stocks = get_stocks_from_db()
+    logger.info(f"Total stocks - {len(stocks)}")
 
-    stocks = response["Items"]
-    count = response["Count"]
-    logger.info(f"Total stocks - {count}")
-
-    # Convert from list of objects to data frame - TODO:
-
-    # stocks = get_stocks_from_db()
-    # logger.info(f"Total stocks - {len(stocks)}")
-    #
-    # return {}
+    return {}
 
     # ----
 
@@ -61,6 +63,7 @@ def handler(event, context):
     stocks_info_table = dynamodb.Table(STOCKS_INFO_TABLE_NAME)
 
     new_column_names = []
+    count = 0
     for row in stocks:
         stock = Stock(**row)
         days_since_last_update = dateutils.days_diff(
@@ -87,7 +90,9 @@ def handler(event, context):
             stock.info_update_datetime = dateutils.to_epoch_time(now)
             stocks_table.put_item(Item=json.loads(stock.to_json(), parse_float=Decimal))
 
-        break
+        count = count + 1
+        if count == 10:
+            break
 
     # Get stocks dividends - TODO:
 
